@@ -1,0 +1,9 @@
+{
+	"betaBot": false,
+	"clientId": {
+		"prod":"999382577368551435",
+		"beta":"999382642652893214"
+	},
+	"guildId": "876543210987654321",
+	"token": "your-token-goes-here"
+}
