@@ -20,24 +20,18 @@ for (const file of commandFiles) {
 	client.commands.set(command.data.name, command);
 }
 
-client.once('ready', () => {
-	console.log('Pronto!');
-});
+const eventsPath = path.join(__dirname, 'events');
+const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
 
-client.on('interactionCreate', async interaction => {
-	if (!interaction.isChatInputCommand()) return;
-
-	const command = client.commands.get(interaction.commandName);
-
-	if (!command) return;
-
-	try {
-		await command.execute(interaction);
+for (const file of eventFiles) {
+	const filePath = path.join(eventsPath, file);
+	const event = require(filePath);
+	if (event.once) {
+		client.once(event.name, (...args) => event.execute(...args));
 	}
-	catch (error) {
-		console.error(error);
-		await interaction.reply({ content: 'Houve um erro ao executar esse comando!', ephemeral: true });
+	else {
+		client.on(event.name, (...args) => event.execute(...args));
 	}
-});
+}
 
 client.login(process.env.PRODTOKEN);
