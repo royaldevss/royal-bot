@@ -53,7 +53,7 @@ module.exports = {
 				.setDescription('Log de Comandos')
 				.setFields(fields);
 		logChannel.send({ embeds: [embed] });
-		
+
 		if (!interaction.isChatInputCommand()) return;
 
 		const command = client.commands.get(interaction.commandName);
