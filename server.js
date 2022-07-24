@@ -1,7 +1,7 @@
 const express = require('express'),
 	app = express();
 
-app.get('/', function (req, res) {
+app.get('/', function(req, res) {
 	res.sendStatus(200);
 	const ping = new Date();
 	ping.setHours(ping.getHours() - 3);
@@ -12,7 +12,7 @@ app.get('/', function (req, res) {
 
 require(__dirname + '/bot.js')(app);
 
-const listener = app.listen(process.env.PORT || 3000, function () {
+const listener = app.listen(process.env.PORT || 3000, function() {
 	console.log(`Porta: ${listener.address().port}`);
 });
 
