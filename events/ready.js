@@ -1,19 +1,17 @@
-const { ActivityType } = require('discord.js');
+const { ActivityType } = require('discord.js'),
+	config = require('../config.json');
 
 
 module.exports = {
 	name: 'ready',
 	once: true,
 	execute(client) {
-
-		/* const avatares = [
-			/*Tema normal config.botConfig.avatarsTheme.default
-		];*/
+		const avatares = [
+			config.botConfig.avatarsThemes.default,
+		];
 
 		const status = [
 			'online',
-			// "dnd",
-			// "idle"
 		];
 
 		const atividades = [
@@ -30,10 +28,10 @@ module.exports = {
 			const b = Math.floor(Math.random() * status.length + 1) - 1;
 			await client.user.setStatus(status[b]);
 		}, 20000);
-		/* setInterval(async () => {
+		setInterval(async () => {
 			let c = Math.floor(Math.random() * avatares.length + 1) - 1;
 			await client.user.setAvatar(avatares[c]);
-		}, 400000);*/
+		}, 400000);
 		console.log(
 			`========= Preparado, logado como: ${client.user.tag} ========= `,
 		);

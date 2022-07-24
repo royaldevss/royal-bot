@@ -6,7 +6,10 @@
 	},
 	"guildId": "999381395803750510",
 	"botConfig":{
-		"themeColor":"#000000"
+		"themeColor":"#000000",
+		"avatarsThemes": {
+			"default":"https://cdn.discordapp.com/attachments/1000752783370231808/1000752843994710106/royal-bot.jpg"
+		}
 	},
 	"logsChannel": {
 		"slashLogId":"1000477260761006140"
