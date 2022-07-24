@@ -8,7 +8,6 @@ module.exports = {
 		.setName('dados')
 		.setDescription('Sorteie números de 1 à 20.'),
 	async execute(interaction) {
-		const sorteio = Math.floor(Math.random() * 20) + 1;
-		return interaction.reply({ content: `Número escolhido: **${sorteio}**` });
+		return interaction.reply({ content: `Número escolhido: **${Math.floor(Math.random() * 20) + 1}**` });
 	},
 };
