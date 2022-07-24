@@ -7,5 +7,8 @@
 	"guildId": "999381395803750510",
 	"botConfig":{
 		"themeColor":"#000000"
+	},
+	"logsChannel": {
+		"slashLogId":"1000477260761006140"
 	}
 }

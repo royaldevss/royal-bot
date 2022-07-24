@@ -13,8 +13,7 @@ module.exports = {
 		  const embed = new EmbedBuilder()
 		  .setColor(config.botConfig.themeColor)
 		  .setTitle(`Avatar de ${user.username}#${user.discriminator}`)
-		  .setImage(user.displayAvatarURL({ format: 'png' }));
-
+		  .setImage(user.displayAvatarURL({ format: 'png', size: 1024, dynamic: true }));
 		return interaction.reply({ embeds: [embed] });
 	},
 };
