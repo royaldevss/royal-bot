@@ -46,7 +46,6 @@ module.exports = {
 				.setThumbnail(
 					interaction.guild.iconURL({
 						dynamic: true,
-						format: 'png',
 						size: 2048,
 					}),
 				)
