@@ -29,7 +29,7 @@ module.exports = {
 			await client.user.setStatus(status[b]);
 		}, 20000);
 		setInterval(async () => {
-			let c = Math.floor(Math.random() * avatares.length + 1) - 1;
+			const c = Math.floor(Math.random() * avatares.length + 1) - 1;
 			await client.user.setAvatar(avatares[c]);
 		}, 400000);
 		console.log(
