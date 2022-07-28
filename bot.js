@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 module.exports = app => {
 	const fs = require('node:fs');
 	const path = require('node:path');
@@ -7,19 +8,24 @@ module.exports = app => {
 	const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 	/*
-* RODE INDIVIDUALMENTE 'node deploy-commands.js'
-* APENAS quando adicionar novo comando!
-*/
+	* RODE INDIVIDUALMENTE 'node deploy-commands.js'
+	* APENAS quando adicionar novo comando!
+	*/
 
 	client.commands = new Collection();
-	const commandsPath = path.join(__dirname, 'commands');
-	const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 
-	for (const file of commandFiles) {
-		const filePath = path.join(commandsPath, file);
-		const command = require(filePath);
-		client.commands.set(command.data.name, command);
-	}
+	let commandCount = 0,
+		eventCount = 0;
+	fs.readdirSync('./commands').forEach((dir) => {
+		const commandFiles = fs.readdirSync(`./commands/${dir}`).filter((files) => files.endsWith('.js'));
+		for (const file of commandFiles) {
+			const command = require(`./commands/${dir}/${file}`);
+			client.commands.set(command.data.name, command);
+		}
+		commandCount++;
+	});
+
+	console.log(`${commandCount} Comandos Carregados.`);
 
 	const eventsPath = path.join(__dirname, 'events');
 	const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
@@ -33,7 +39,9 @@ module.exports = app => {
 		else {
 			client.on(event.name, (...args) => event.execute(...args));
 		}
+		eventCount++;
 	}
+	console.log(`${eventCount} Eventos Carregados.`);
 
 	client.login(process.env.PRODTOKEN);
 };
