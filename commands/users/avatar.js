@@ -1,7 +1,7 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 const { SlashCommandBuilder } = require('@discordjs/builders'),
 	{ EmbedBuilder } = require('discord.js'),
-	config = require('../config.json');
+	config = require('../../config.json');
 
 module.exports = {
 	data: new SlashCommandBuilder()
